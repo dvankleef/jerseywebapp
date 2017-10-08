@@ -27,6 +27,7 @@ public class ActivityResource {
     @Produces({MediaType.APPLICATION_JSON , MediaType.APPLICATION_XML})
     @Path("{activityId}")
     public Activity getActivity(@PathParam("activityId") String activityId) {
+        System.out.println("Getting activity with id " + activityId);
         return activityRepository.findActivityById(activityId);
     }
 
@@ -51,6 +52,19 @@ public class ActivityResource {
         activity.setDuration(Integer.parseInt(formParams.getFirst("duration")));
 
         activityRepository.create(activity);
+        return activity;
+    }
+
+    @POST
+    @Path("activity")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON , MediaType.APPLICATION_XML})
+    public Activity createActivity(Activity activity) {
+        System.out.println("hoooi " + activity.getDescription());
+        System.out.println(activity.getDuration());
+
+        activityRepository.create(activity);
+
         return activity;
     }
 }
