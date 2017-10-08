@@ -1,4 +1,4 @@
-package com.dvankleef.projects;
+package com.dvankleef;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
